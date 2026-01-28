@@ -25,12 +25,18 @@ export const auth = {
 
 export const users = {
   me: () => client.get('/users/me'),
-  list: () => client.get('/users')
+  list: () => client.get('/users'),
+  get: (id) => client.get(`/users/${id}`),
+  create: (data) => client.post('/users', data),
+  update: (id, data) => client.put(`/users/${id}`, data),
+  delete: (id) => client.delete(`/users/${id}`)
 }
 
 export const buildings = {
   list: () => client.get('/buildings'),
   create: (data) => client.post('/buildings', data),
+  get: (id) => client.get(`/buildings/${id}`),
+  update: (id, data) => client.put(`/buildings/${id}`, data),
   upload: (id, file) => {
     const fd = new FormData()
     fd.append('file', file)
